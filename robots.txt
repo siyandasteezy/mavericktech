@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://siyandasteezy.github.io/mavericktech/sitemap.xml
