@@ -239,9 +239,8 @@
     .hero-logos { margin-top: 3rem; }
     .hero-logos-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.2rem; }
     .hero-logos-strip { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; row-gap: 1.2rem; }
-    .hero-logos-strip img { height: auto; max-height: 65px; max-width: 200px; width: auto; object-fit: contain; opacity: 0.85; transition: opacity 0.3s; }
-    .hero-logos-strip img:hover { opacity: 0.9; }
-    .hero-logos-strip img:hover { opacity: 0.9; }
+    .hero-logos-strip img { height: auto; max-height: 65px; max-width: 200px; width: auto; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.6; transition: filter 0.35s, opacity 0.35s; }
+    .hero-logos-strip img:hover { filter: none; opacity: 1; }
     .btn {
       display: inline-block; text-decoration: none; cursor: pointer;
       font-family: inherit; font-size: 0.78rem;
