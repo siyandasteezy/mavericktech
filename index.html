@@ -177,7 +177,7 @@
     .nav-logo-img {
       height: 90px; width: auto; display: block;
     }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links { display: flex; gap: clamp(0.9rem, 1.4vw, 2rem); list-style: none; }
     .nav-links a {
       color: rgba(255,255,255,0.72); text-decoration: none;
       font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
@@ -226,6 +226,7 @@
       color: var(--accent); margin-bottom: 1.4rem;
     }
     .hero h1 {
+      font-size: clamp(2rem, 5.5vw, 70px);
       margin-bottom: 1.5rem;
       background: linear-gradient(175deg, #fff 30%, rgba(255,255,255,0.52) 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -235,7 +236,12 @@
       font-size: clamp(1rem, 1.8vw, 1.2rem);
       color: var(--muted); max-width: 580px; margin: 0 auto 2.8rem;
     }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-logos { margin-top: 3rem; }
+    .hero-logos-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 1.2rem; }
+    .hero-logos-strip { display: flex; align-items: center; justify-content: center; gap: 2rem; flex-wrap: wrap; row-gap: 1.2rem; }
+    .hero-logos-strip img { height: auto; max-height: 65px; max-width: 200px; width: auto; object-fit: contain; opacity: 0.85; transition: opacity 0.3s; }
+    .hero-logos-strip img:hover { opacity: 0.9; }
+    .hero-logos-strip img:hover { opacity: 0.9; }
     .btn {
       display: inline-block; text-decoration: none; cursor: pointer;
       font-family: inherit; font-size: 0.78rem;
@@ -443,6 +449,11 @@
     .svc-card:hover { border-color: rgba(14,165,233,0.28); background: rgba(14,165,233,0.04); }
     .svc-card h3 { font-size: 0.9rem; margin-bottom: 0.5rem; }
     .svc-card p { font-size: 0.82rem; color: var(--muted); }
+    .svc-industries { margin-top: 4rem; padding-top: 3rem; border-top: 1px solid var(--border); grid-column: 1 / -1; }
+    .svc-industries .section-tag { margin-bottom: 1.5rem; }
+    .industry-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem 1.5rem; }
+    .industry-item { display: flex; align-items: center; gap: 0.65rem; color: var(--muted); font-size: 0.8rem; letter-spacing: 0.04em; }
+    .industry-item svg { width: 16px; height: 16px; stroke: var(--accent); flex-shrink: 0; }
 
     /* ─── CLIENTS ─────────────────────────────── */
     .clients {
@@ -510,17 +521,13 @@
     .partner-logo { display: flex; align-items: center; justify-content: center; }
     .partner-logo img {
       height: 48px; width: auto; max-width: 180px;
-      filter: brightness(0) invert(1);
-      opacity: 0.45;
+      opacity: 0.85;
       transition: opacity 0.3s;
       object-fit: contain;
     }
-    .partner-logo img:hover { opacity: 0.95; }
-    [data-theme="ocean"] .partner-logo img {
-      filter: brightness(0);
-      opacity: 0.55;
-    }
-    [data-theme="ocean"] .partner-logo img:hover { opacity: 0.9; }
+    .partner-logo img:hover { opacity: 1; }
+    [data-theme="ocean"] .partner-logo img { opacity: 0.85; }
+    [data-theme="ocean"] .partner-logo img:hover { opacity: 1; }
 
     /* ─── CONTACT ─────────────────────────────── */
     .contact {
@@ -590,9 +597,12 @@
       .clients-grid { grid-template-columns: 1fr 1fr; }
       .diff-grid { grid-template-columns: 1fr; }
     }
-    @media (max-width: 640px) {
-      nav { padding: 1rem 1.5rem; }
+    @media (max-width: 900px) {
       .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .industry-grid { grid-template-columns: repeat(2, 1fr); }
+      nav { padding: 1rem 1.5rem; }
       .nav-logo-img { height: 48px; }
       .wrap, .wrap-sm { padding: 5rem 1.5rem; }
       .feats-grid { grid-template-columns: 1fr; }
@@ -736,9 +746,9 @@
   <a href="#home" class="nav-logo"><img src="images/logo-maverick.png" alt="Maverick Technologies" class="nav-logo-img"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#mission">Mission</a></li>
     <li><a href="#deepsight">DeepSight</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#clients">Clients</a></li>
   </ul>
   <div class="nav-actions">
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle ocean mode">
@@ -771,9 +781,14 @@
     <span class="eyebrow">Space &amp; Terrestrial Technology Systems</span>
     <h1>Where Space Technology<br>Meets Earth Intelligence</h1>
     <p>Maverick Technologies offers state-of-the-art monitoring and tracking systems using satellite and terrestrial networks — designed for clients that require advanced visibility across large, remote, coastal, infrastructure or operational environments.</p>
-    <div class="hero-btns">
-      <a href="#deepsight" class="btn btn-white">Explore DeepSight</a>
-      <a href="#about"     class="btn btn-ghost">Our Story</a>
+    <div class="hero-logos">
+      <div class="hero-logos-label">Trusted by</div>
+      <div class="hero-logos-strip">
+        <img src="images/client-sansa.png" alt="SANSA">
+        <img src="images/client-dsi.png" alt="Department of Science, Technology and Innovation">
+        <img src="images/client-tuksnovation.png" alt="TuksNovation">
+        <img src="images/client-nrf.png" alt="NRF">
+      </div>
     </div>
   </div>
   <div class="scroll-cue">
@@ -837,7 +852,6 @@
       <img src="images/logo-deepsight.png" alt="DeepSight — Advanced Maritime Intelligence and Monitoring" class="ds-logo-img">
       <p class="ds-body">DeepSight is not just a map. It is an <strong>intelligent maritime monitoring and intelligence system</strong> that combines satellite observation, terrestrial tracking data and analytics to provide improved visibility of vessel activity, abnormal movement and maritime risk across selected areas of interest.</p>
       <p class="ds-body" style="margin-bottom:2.2rem">The name DeepSight reflects the purpose of the system: to see deeper than ordinary monitoring tools. In maritime environments, not all activity is visible through one data source. A vessel may transmit its position normally, move slowly, loiter, stop unexpectedly, enter a sensitive area, switch off tracking signals, or operate outside normal patterns. <strong>DeepSight is designed to bring these signals together and support smarter maritime awareness.</strong></p>
-      <a href="#ds-features" class="btn btn-white">Explore Capabilities</a>
     </div>
     <div class="viz-wrap reveal reveal-delay-1">
       <canvas id="maritime-canvas"></canvas>
@@ -853,91 +867,9 @@
   </div>
 </section>
 
-<!-- ═══ DEEPSIGHT FEATURES ════════════════════════════════════════════════ -->
-<section class="ds-feats" id="ds-features" aria-label="DeepSight Capabilities">
-  <div class="wrap">
-    <div class="feats-head reveal">
-      <div class="section-tag">DeepSight Capabilities</div>
-      <h2>See what others miss</h2>
-      <p>DeepSight gives maritime stakeholders a smarter way to monitor vessel activity, understand risk and make better decisions. By combining space-based observation, terrestrial tracking information and analytics, DeepSight supports improved visibility across coastal and maritime environments where ordinary monitoring may not be enough.</p>
-    </div>
-    <div class="feats-grid reveal">
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        <h3>Multi-Source Intelligence</h3>
-        <p>DeepSight combines satellite and terrestrial data sources where available, delivering a richer operating picture than any single source can provide.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        <h3>Behavioural Analytics</h3>
-        <p>The system is designed to analyse movement patterns, not only display positions — detecting unusual route patterns, stopping behaviour, speed changes and unexpected movement.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z"/><path d="M8 2v16M16 6v16"/></svg>
-        <h3>Maritime Area Monitoring</h3>
-        <p>Monitoring of selected coastlines, ports, anchorage zones or operating areas — configured around the client's coastline, port, route or infrastructure area.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
-        <h3>Satellite-Supported Detection</h3>
-        <p>Use of satellite observation to support wider-area maritime visibility, including comparison between vessel-reported positions and satellite-based observations where applicable.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M17.94 11A6 6 0 1 0 12 18"/><circle cx="18" cy="18" r="3"/><path d="M18 2v4M18 15v1M12 18h1M24 18h-3"/></svg>
-        <h3>Dark Vessel Awareness</h3>
-        <p>DeepSight can support investigation of vessels or objects that may not be clearly visible in normal tracking data, identifying possible gaps in the maritime picture.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        <h3>Risk Scoring &amp; Alerting</h3>
-        <p>Generation of alerts or risk indicators based on movement, location and behaviour rules, enabling clients to respond before incidents occur.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-        <h3>Operational Dashboard</h3>
-        <p>A professional map-based interface for monitoring and decision support — presenting information in a way that supports real operational decisions.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        <h3>Intelligence Reporting</h3>
-        <p>DeepSight can support summaries, evidence, operational reporting and management-level outputs for operations, risk management and compliance decisions.</p>
-      </div>
-      <div class="feat">
-        <svg class="feat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        <h3>Historical Review</h3>
-        <p>Ability to review past vessel activity and movement patterns for analysis and investigation, supporting long-range planning and trend identification.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PARTNERS ═══════════════════════════════════════════════════════════ -->
-<section class="partners" aria-label="Partners and collaborators">
-  <div class="wrap">
-    <div class="partners-head reveal">
-      <div class="section-tag">Our Clients</div>
-      <h2>Trusted by leading South African institutions</h2>
-      <p>We work alongside government agencies, research institutions and innovation programmes committed to advancing space and terrestrial intelligence.</p>
-    </div>
-    <div class="partners-strip reveal">
-      <div class="partner-logo">
-        <img src="images/client-tuksnovation.png" alt="TuksNovation — University of Pretoria Innovation Accelerator">
-      </div>
-      <div class="partner-logo">
-        <img src="images/client-dsi.png" alt="Department of Science, Technology and Innovation — Republic of South Africa">
-      </div>
-      <div class="partner-logo">
-        <img src="images/client-sansa.png" alt="SANSA — South African National Space Agency">
-      </div>
-      <div class="partner-logo">
-        <img src="images/client-nrf.png" alt="NRF — National Research Foundation">
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ═══ MISSION STATEMENT ══════════════════════════════════════════════════ -->
-<section class="mission">
+<section class="mission" id="mission">
   <div class="wrap">
     <div class="mission-inner reveal">
       <div class="section-tag">Our Purpose</div>
@@ -947,143 +879,75 @@
   </div>
 </section>
 
-<!-- ═══ WHAT MAKES US DIFFERENT ═══════════════════════════════════════════ -->
-<section class="diff">
-  <div class="wrap">
-    <div style="text-align:center; margin-bottom:3rem;" class="reveal">
-      <div class="section-tag">What Makes Us Different</div>
-      <h2>Built different. By design.</h2>
-      <p style="color:var(--muted);max-width:700px;margin:1.2rem auto 0;font-size:0.95rem;line-height:1.75;">Maverick Technologies is different because we do not treat satellite technology as a separate technical product. We integrate it into practical operational systems. Many organisations may have access to data, but they do not always have the tools to convert that data into useful intelligence. Our difference is in the way we combine data sources, engineering knowledge and operational understanding into systems that solve real problems.</p>
-    </div>
-    <div class="diff-grid reveal">
-      <div class="diff-item">
-        <div class="diff-num">01</div>
-        <h3>Space Meets Terrestrial</h3>
-        <p>We combine space-based and terrestrial information instead of relying on one data source only.</p>
-      </div>
-      <div class="diff-item">
-        <div class="diff-num">02</div>
-        <h3>Built Around Your Environment</h3>
-        <p>We build solutions around the client's specific environment and operational questions.</p>
-      </div>
-      <div class="diff-item">
-        <div class="diff-num">03</div>
-        <h3>Intelligence, Not Just Data</h3>
-        <p>We focus on practical intelligence outputs, not only raw data or technical graphics.</p>
-      </div>
-      <div class="diff-item">
-        <div class="diff-num">04</div>
-        <h3>End-to-End Systems</h3>
-        <p>We design systems that can support monitoring, reporting, risk management and decision-making.</p>
-      </div>
-      <div class="diff-item">
-        <div class="diff-num">05</div>
-        <h3>Local Capability, Global Relevance</h3>
-        <p>We are developing local capability in advanced technology areas with global relevance.</p>
-      </div>
-      <div class="diff-item">
-        <div class="diff-num">06</div>
-        <h3>Partners, Not Vendors</h3>
-        <p>We understand that clients need clarity, reliability, confidentiality and measurable value.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="rule"></div>
-
 <!-- ═══ SERVICES ══════════════════════════════════════════════════════════ -->
 <section class="services" id="services" aria-label="Services">
   <div class="wrap">
     <div class="svc-grid">
       <div class="reveal">
         <div class="section-tag">What We Offer</div>
-        <h2>Advanced systems for complex environments</h2>
-        <p class="lead">Maverick Technologies offers state-of-the-art monitoring and tracking systems using satellite and terrestrial networks. Our services are designed for clients that require advanced visibility across large, remote, coastal, infrastructure or operational environments. We combine data acquisition, processing, analytics and presentation into complete solutions.</p>
+        <h2>Intelligence built around your environment</h2>
+        <p class="lead">We design and deliver end-to-end monitoring and intelligence systems that combine space-based observation with terrestrial tracking. Rather than providing raw data, we convert multi-source information into practical intelligence — tailored to each client's operational environment and decision-making needs.</p>
         <ul class="svc-list">
-          <li>Satellite-based monitoring and intelligence solutions</li>
-          <li>Terrestrial network-based tracking and monitoring solutions</li>
-          <li>Maritime monitoring and vessel intelligence systems</li>
-          <li>Infrastructure monitoring and abnormal activity detection</li>
-          <li>Geospatial dashboards and operational intelligence reporting</li>
-          <li>Data fusion between satellite observations, terrestrial feeds and client data</li>
-          <li>Custom analytics for client-specific use cases</li>
-          <li>Technology consulting for space and terrestrial system applications</li>
-          <li>Prototype development, proof-of-concept systems and pilot deployments</li>
-          <li>Operational reports for management, risk, compliance and strategic decision-making</li>
+          <li>Maritime monitoring and vessel intelligence</li>
+          <li>Satellite-based surveillance and wider-area monitoring</li>
+          <li>Infrastructure and high-value asset monitoring</li>
+          <li>Behavioural analytics, risk scoring and alerting</li>
+          <li>Geospatial dashboards and operational reporting</li>
+          <li>Data fusion — satellite, terrestrial and client data</li>
+          <li>Custom analytics and technology consulting</li>
+          <li>Operational reports for management, risk and compliance</li>
         </ul>
       </div>
       <div class="svc-cards reveal reveal-delay-1">
-        <img src="images/data-analytics.jpg" alt="Operational intelligence dashboard" class="svc-img">
         <div class="svc-card">
-          <h3>Maritime Intelligence</h3>
-          <p>Improved visibility of vessel activity, port approach areas, anchorage zones, possible dark vessel behaviour and abnormal movement patterns for port operators and maritime authorities.</p>
+          <h3>Space Meets Terrestrial</h3>
+          <p>We combine satellite observation with terrestrial tracking networks — giving clients a richer intelligence picture than any single source can provide, tailored to their specific coastline, route or operating area.</p>
         </div>
         <div class="svc-card">
-          <h3>Infrastructure Monitoring</h3>
-          <p>Improved monitoring of activity around high-value assets or sensitive operating environments — for energy companies, infrastructure owners and security organisations.</p>
+          <h3>Intelligence, Not Just Data</h3>
+          <p>We convert raw data into usable intelligence — vessel behaviour analytics, dark vessel detection, risk scoring, alerting and historical review — outputs clients can act on directly.</p>
         </div>
         <div class="svc-card">
-          <h3>Risk &amp; Insurance Intelligence</h3>
-          <p>Improved verification of events, better risk visibility and stronger evidence for claims-related assessments through satellite and terrestrial data fusion.</p>
-        </div>
-        <div class="svc-card">
-          <h3>Operational Decision Support</h3>
-          <p>We focus on systems that help clients answer practical questions: What is happening? Where is it happening? Is it normal or abnormal? What is the level of risk? What action or reporting is required?</p>
+          <h3>End-to-End Delivery</h3>
+          <p>From data acquisition and processing through to dashboards, reporting and consulting — we handle the full system so clients focus on their operations, not the technology behind them.</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CLIENTS ════════════════════════════════════════════════════════════ -->
-<section class="clients" id="clients" aria-label="Clients and industries served">
-  <div class="wrap">
-    <div class="clients-head reveal">
-      <div class="section-tag">Who We Serve</div>
-      <h2>Built for organisations that need better visibility</h2>
-      <p>Clients benefit from working with Maverick Technologies because our services are tailored to their specific operational needs. We do not believe that one system can solve every problem. Each client environment is different, and each industry has different risks, priorities, reporting needs and data requirements.</p>
-    </div>
-    <div class="clients-grid reveal">
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l3-4 4 2 4-6 4 4"/><rect x="1" y="3" width="22" height="14" rx="1"/><path d="M1 21h22"/></svg>
-        <h3>Port Operators</h3>
-        <p>Improved visibility of vessel activity and port approach areas for operational risk monitoring and maritime management</p>
-      </div>
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        <h3>Insurance &amp; Risk</h3>
-        <p>Stronger information for maritime risk assessment and event verification, supporting improved evidence for claims-related decisions</p>
-      </div>
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-        <h3>Logistics &amp; Shipping</h3>
-        <p>Better operational awareness for logistics and shipping stakeholders across maritime and terrestrial environments</p>
-      </div>
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-        <h3>Energy &amp; Infrastructure</h3>
-        <p>Identification of abnormal activity around important sites and improved monitoring of high-value assets or sensitive operating environments</p>
-      </div>
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <h3>Government &amp; Regulatory</h3>
-        <p>Improved situational awareness and reporting for government-linked and regulatory environments</p>
-      </div>
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        <h3>Security &amp; Monitoring</h3>
-        <p>Early warning indicators instead of only reacting after an incident — supporting proactive security and monitoring operations</p>
-      </div>
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        <h3>Research Partners</h3>
-        <p>Space and terrestrial technology research, data analysis and strategic technology projects</p>
-      </div>
-      <div class="client">
-        <svg class="client-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
-        <h3>Wide-Area Monitoring</h3>
-        <p>Monitoring of wide-area physical environments where coverage, reliability and intelligence outputs are critical</p>
+      <div class="svc-industries reveal">
+        <div class="section-tag">Who We Serve</div>
+        <div class="industry-grid">
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l3-4 4 2 4-6 4 4"/><rect x="1" y="3" width="22" height="14" rx="1"/><path d="M1 21h22"/></svg>
+            <span>Port Operators</span>
+          </div>
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Insurance &amp; Risk</span>
+          </div>
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span>Logistics &amp; Shipping</span>
+          </div>
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            <span>Energy &amp; Infrastructure</span>
+          </div>
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <span>Government &amp; Regulatory</span>
+          </div>
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            <span>Security &amp; Monitoring</span>
+          </div>
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Research Partners</span>
+          </div>
+          <div class="industry-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            <span>Wide-Area Monitoring</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1108,10 +972,6 @@
         <div class="c-detail">
           <div class="lbl">Flagship Product</div>
           <div class="val">DeepSight — Maritime Intelligence System</div>
-        </div>
-        <div class="c-detail">
-          <div class="lbl">Confidentiality</div>
-          <div class="val">NDA available on request prior to detailed technical discussions</div>
         </div>
       </div>
       <div class="reveal reveal-delay-1">
@@ -1157,9 +1017,9 @@
     <div class="f-logo"><img src="images/logo-maverick.png" alt="Maverick Technologies" class="f-logo-img"></div>
     <ul class="f-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#mission">Mission</a></li>
       <li><a href="#deepsight">DeepSight</a></li>
       <li><a href="#services">Services</a></li>
-      <li><a href="#clients">Clients</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="f-copy">&copy; 2025 Maverick Technologies. All rights reserved.</div>
