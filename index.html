@@ -608,6 +608,34 @@
       .feats-grid { grid-template-columns: 1fr; }
       .f-row { grid-template-columns: 1fr; }
       .clients-grid { grid-template-columns: 1fr; }
+
+      /* Hero: prevent content from reaching behind the nav */
+      .hero {
+        justify-content: center;
+        padding-top: 6rem;
+        padding-bottom: 3rem;
+      }
+      .hero-content {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 0 1.25rem;
+      }
+      .hero h1 { font-size: clamp(1.75rem, 8vw, 2.8rem); }
+      .hero p { font-size: 0.9rem; margin-bottom: 1.6rem; max-width: 100%; }
+      .hero-logos { margin-top: 1.8rem; }
+
+      /* Logos: single horizontal row, scale to fit viewport */
+      .hero-logos-strip {
+        flex-wrap: nowrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+      }
+      .hero-logos-strip img {
+        max-height: 36px;
+        max-width: none;
+        width: calc(22vw - 0.75rem);
+        flex-shrink: 1;
+      }
     }
 
     /* ─── THEME TOGGLE BUTTON ────────────────── */
