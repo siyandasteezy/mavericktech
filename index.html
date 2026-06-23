@@ -344,7 +344,6 @@
     .ds-logo-img {
       width: min(320px, 88%); height: auto; display: block;
       margin-bottom: 1.6rem;
-      mix-blend-mode: lighten;
     }
     .ds-body { color: var(--muted); font-size: 0.96rem; margin-bottom: 1.6rem; line-height: 1.85; }
     .ds-body strong { color: rgba(255,255,255,0.85); font-weight: 400; }
@@ -700,10 +699,7 @@
         url('images/deepsight-ship.jpg') center 40% / cover no-repeat;
     }
     [data-theme="ocean"] .ds-logo-img {
-      mix-blend-mode: normal;
-      background: rgba(4,14,30,0.88);
-      padding: 1.5rem 2rem;
-      border: 1px solid rgba(56,189,248,0.22);
+      filter: brightness(0.85);
     }
     [data-theme="ocean"] .ds-body strong { color: rgba(8,25,41,0.9); }
     [data-theme="ocean"] .about {
@@ -774,9 +770,9 @@
   <a href="#home" class="nav-logo"><img src="images/logo-maverick.png" alt="Maverick Technologies" class="nav-logo-img"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#mission">Mission</a></li>
-    <li><a href="#deepsight">DeepSight</a></li>
     <li><a href="#services">Services</a></li>
+    <li><a href="#deepsight">DeepSight</a></li>
+    <li><a href="#mission">Mission</a></li>
   </ul>
   <div class="nav-actions">
     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle ocean mode">
@@ -1045,9 +1041,9 @@
     <div class="f-logo"><img src="images/logo-maverick.png" alt="Maverick Technologies" class="f-logo-img"></div>
     <ul class="f-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#mission">Mission</a></li>
-      <li><a href="#deepsight">DeepSight</a></li>
       <li><a href="#services">Services</a></li>
+      <li><a href="#deepsight">DeepSight</a></li>
+      <li><a href="#mission">Mission</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="f-copy">&copy; 2025 Maverick Technologies. All rights reserved.</div>
