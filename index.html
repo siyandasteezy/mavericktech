@@ -201,17 +201,20 @@
       padding-bottom: 9rem; text-align: center;
       overflow: hidden;
     }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background:
-        linear-gradient(180deg, rgba(5,5,5,0.35) 0%, rgba(5,5,5,0.65) 60%, rgba(5,5,5,0.95) 100%),
-        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(14,165,233,0.22) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(14,165,233,0.08) 0%, transparent 60%),
-        url('images/earth-orbit.jpg') center center / cover no-repeat;
+    .hero-video {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%; object-fit: cover;
     }
-    #star-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 1;
+      background:
+        linear-gradient(180deg, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.55) 60%, rgba(5,5,5,0.92) 100%),
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(14,165,233,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 60%, rgba(14,165,233,0.07) 0%, transparent 60%);
+    }
+    #star-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; }
     .hero-grid {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 2;
       background-image:
         linear-gradient(rgba(14,165,233,0.025) 1px, transparent 1px),
         linear-gradient(90deg, rgba(14,165,233,0.025) 1px, transparent 1px);
@@ -219,7 +222,7 @@
       -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 100%, black 20%, transparent 80%);
       mask-image: radial-gradient(ellipse 80% 70% at 50% 100%, black 20%, transparent 80%);
     }
-    .hero-content { position: relative; z-index: 2; max-width: 920px; padding: 0 2rem; }
+    .hero-content { position: relative; z-index: 3; max-width: 920px; padding: 0 2rem; }
     .eyebrow {
       display: inline-block;
       font-size: 0.7rem; letter-spacing: 0.32em; text-transform: uppercase;
@@ -403,7 +406,7 @@
     .mission {
       background:
         linear-gradient(160deg, rgba(5,5,5,0.86) 0%, rgba(6,21,32,0.72) 50%, rgba(5,5,5,0.86) 100%),
-        url('images/hero-space.jpg') center center / cover no-repeat;
+        url('images/bg-rocket-launch.jpg') center 40% / cover no-repeat;
       text-align: center;
     }
     .mission .wrap { padding: 9rem 3rem; }
@@ -798,6 +801,9 @@
 <!-- ═══ HERO ═════════════════════════════════════════════════════════════ -->
 <main>
 <section class="hero" id="home" aria-label="Hero — See beyond the horizon">
+  <video class="hero-video" autoplay muted loop playsinline poster="images/earth-orbit.jpg">
+    <source src="images/bg-earth-sun.mp4" type="video/mp4">
+  </video>
   <div class="hero-bg"></div>
   <canvas id="star-canvas"></canvas>
   <div class="hero-grid"></div>
