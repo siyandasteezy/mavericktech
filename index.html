@@ -1224,6 +1224,18 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
 })();
+
+// Force hero video autoplay (handles browsers that block autoplay)
+(function() {
+  const v = document.querySelector('.hero-video');
+  if (!v) return;
+  v.muted = true;
+  const attempt = () => v.play().catch(() => {});
+  if (document.readyState === 'complete') { attempt(); }
+  else { window.addEventListener('load', attempt); }
+  document.addEventListener('click', attempt, { once: true });
+  document.addEventListener('touchstart', attempt, { once: true });
+})();
 </script>
 </body>
 </html>
