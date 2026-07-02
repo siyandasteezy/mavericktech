@@ -350,6 +350,9 @@
       mix-blend-mode: screen;
     }
     .ds-body { color: var(--muted); font-size: 0.96rem; margin-bottom: 1.6rem; line-height: 1.85; }
+    .ds-challenges { list-style: none; margin: 1.6rem 0 2.2rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem 1.5rem; }
+    .ds-challenges li { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; color: rgba(255,255,255,0.75); letter-spacing: 0.02em; }
+    .ds-challenges li svg { width: 15px; height: 15px; stroke: var(--accent); flex-shrink: 0; }
     .ds-body strong { color: rgba(255,255,255,0.85); font-weight: 400; }
 
     /* Maritime viz */
@@ -955,7 +958,13 @@
       <div class="ds-badge"><span class="ds-badge-dot"></span>Flagship Product</div>
       <img src="images/logo-deepsight.png" alt="DeepSight — Advanced Maritime Intelligence and Monitoring" class="ds-logo-img">
       <p class="ds-body">An <strong>intelligent maritime monitoring system</strong> that combines satellite observation, terrestrial tracking and analytics to give operators improved visibility of vessel activity, movement patterns and risk — across any selected area of interest.</p>
-      <p class="ds-body" style="margin-bottom:2.2rem">Not all maritime activity is visible through one data source. <strong>DeepSight brings multiple signals together so operators can see what ordinary monitoring misses.</strong></p>
+      <p class="ds-body">Not all maritime activity is visible through one data source. <strong>DeepSight brings multiple signals together so operators can see what ordinary monitoring misses.</strong></p>
+      <ul class="ds-challenges">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="3"/><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/></svg>Small vessel detection</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>Dark vessel awareness</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 17l3-4 4 2 4-6 4 4"/><rect x="1" y="3" width="22" height="14" rx="1"/><path d="M1 21h22"/></svg>Coastal monitoring</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Port security support</li>
+      </ul>
     </div>
     <div class="viz-wrap reveal reveal-delay-1">
       <canvas id="maritime-canvas"></canvas>
