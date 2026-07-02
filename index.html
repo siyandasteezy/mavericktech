@@ -537,10 +537,14 @@
 
     /* ─── CONTACT ─────────────────────────────── */
     .contact {
-      background:
-        linear-gradient(180deg, rgba(5,5,5,0.94) 0%, rgba(5,5,5,0.90) 50%, rgba(5,5,5,0.94) 100%),
-        url('images/coastline-aerial.jpg') center center / cover no-repeat;
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, rgba(5,5,5,0.94) 0%, rgba(5,5,5,0.90) 50%, rgba(5,5,5,0.94) 100%);
     }
+    .contact-video {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .contact .wrap { position: relative; z-index: 1; }
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
     .contact-text h2 { margin-bottom: 2rem; }
     .contact-text p { color: var(--muted); margin-bottom: 2.5rem; font-size: 0.93rem; }
@@ -993,6 +997,9 @@
 
 <!-- ═══ CONTACT ════════════════════════════════════════════════════════════ -->
 <section class="contact" id="contact" aria-label="Contact Maverick Technologies">
+  <video class="contact-video" autoplay muted loop playsinline>
+    <source src="images/bg-contact.mp4" type="video/mp4">
+  </video>
   <div class="wrap">
     <div class="contact-grid">
       <div class="reveal">
